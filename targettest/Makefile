@@ -108,7 +108,7 @@ DISK_atarixl   = testcode.atr
 # --------------------------------------------------------------------------
 # Generic rules
 
-.PHONY: all mostlyclean clean zip testcode disk
+.PHONY: testcode all mostlyclean clean zip disk platforms
 
 %: %.c
 %: %.s
@@ -174,7 +174,7 @@ endif
 # --------------------------------------------------------------------------
 # Lists of subdirectories
 
-DIRLIST = accelerator apple2 atari atari5200 cbm gamate pce sym1
+DIRLIST = accelerator atari cbm gamate pce
 
 # --------------------------------------------------------------------------
 # Lists of executables
@@ -211,7 +211,6 @@ EXELIST_c64 = \
 	strnlen \
 	stroserror-test \
 	strqtok-test \
-	tinyshell \
 	uname-test
 
 # omitted: seek
@@ -246,7 +245,6 @@ EXELIST_c128 = \
 	strnlen \
 	stroserror-test \
 	strqtok-test \
-	tinyshell \
 	uname-test
 
 
@@ -278,7 +276,6 @@ EXELIST_c16 = \
 	strnlen \
 	stroserror-test \
 	strqtok-test \
-	tinyshell \
 	uname-test
 
 # omitted: seek ser-test
@@ -312,7 +309,6 @@ EXELIST_cbm510 = \
 	strnlen \
 	stroserror-test \
 	strqtok-test \
-	tinyshell \
 	uname-test
 
 # omitted: joy-test mouse-test seek
@@ -345,7 +341,6 @@ EXELIST_cbm610 = \
 	strnlen \
 	stroserror-test \
 	strqtok-test \
-	tinyshell \
 	uname-test
 
 # omitted: clock-test em-test mouse-test seek ser-test
@@ -376,7 +371,6 @@ EXELIST_pet = \
 	strnlen \
 	stroserror-test \
 	strqtok-test \
-	tinyshell \
 	uname-test
 
 # omitted: clock-test em-test mouse-test seek
@@ -408,10 +402,9 @@ EXELIST_plus4 = \
 	strnlen \
 	stroserror-test \
 	strqtok-test \
-	tinyshell \
 	uname-test
 
-# omitted: seek clock-test mouse-test ser-test 
+# omitted: seek clock-test mouse-test ser-test
 EXELIST_vic20 = \
 	minimal \
 	arg-test \
@@ -440,7 +433,6 @@ EXELIST_vic20 = \
 	strnlen \
 	stroserror-test \
 	strqtok-test \
-	tinyshell \
 	uname-test
 
 # omitted: cpeek-test, clock
@@ -474,7 +466,6 @@ EXELIST_apple2 = \
 	strnlen \
 	stroserror-test \
 	strqtok-test \
-	tinyshell \
 	uname-test
 
 EXELIST_apple2enh = $(EXELIST_apple2)
@@ -511,16 +502,16 @@ EXELIST_atari = \
 	strnlen \
 	stroserror-test \
 	strqtok-test \
-	tinyshell \
 	uname-test
 
 EXELIST_atarixl = $(EXELIST_atari)
 
-# omitted: clock-test clock cpeek-test deb dir-test em-test exec-test1 exec-test2
-# joy-test mouse-test rename-test seek ser-test stroserror-test tinyshell
+# omitted: clock-test cpeek-test deb dir-test em-test exec-test1 exec-test2
+# joy-test mouse-test rename-test seek ser-test stroserror-test
 EXELIST_telestrat = \
 	minimal \
 	arg-test \
+	clock \
 	conio \
 	cprintf \
 	cursor \
@@ -541,7 +532,7 @@ EXELIST_telestrat = \
 # omitted: arg-test clock-test clock cpeek-test conio cprintf cursor deb dir-test
 # em-test exec-test1 exec-test2 fileio-test ft getopt-test heaptest joy-test
 # mouse-test mul-test posixio-test rename-test scanf-test seek ser-test strdup-test
-# stroserror-test tinyshell uname-test
+# stroserror-test uname-test
 EXELIST_sym1 = \
 	minimal \
 	div-test \
@@ -550,7 +541,7 @@ EXELIST_sym1 = \
 	strqtok-test
 
 # omitted: clock-test cpeek-test conio deb dir-test em-test exec-test1 exec-test2
-# fileio-test ft mouse-test posixio-test rename-test seek ser-test tinyshell
+# fileio-test ft mouse-test posixio-test rename-test seek ser-test
 EXELIST_atmos = \
 	minimal \
 	arg-test \
@@ -573,7 +564,7 @@ EXELIST_atmos = \
 # omitted: arg-test clock-test clock cpeek-test conio cprintf deb dir-test div-test
 # em-test exec-test1 exec-test2 fileio-test ft getopt-test heaptest joy-test moddiv-test
 # mouse-test mul-test posixio-test rename-test scanf-test seek ser-test strdup-test
-# strnlen stroserror-test strqtok-test tinyshell uname-test
+# strnlen stroserror-test strqtok-test uname-test
 EXELIST_creativision = \
 	minimal \
 	cursor
@@ -608,13 +599,12 @@ EXELIST_cx16 = \
 	strnlen \
 	stroserror-test \
 	strqtok-test \
-	tinyshell \
 	uname-test
 
 # omitted: arg-test clock-test clock cpeek-test cprintf cursor deb dir-test div-test
 # em-test exec-test1 exec-test2 fileio-test ft getopt-test heaptest joy-test moddiv-test
 # mouse-test mul-test posixio-test rename-test scanf-test seek ser-test strdup-test
-# strnlen stroserror-test strqtok-test tinyshell uname-test
+# strnlen stroserror-test strqtok-test uname-test
 EXELIST_nes = \
 	minimal \
 	conio
@@ -622,15 +612,15 @@ EXELIST_nes = \
 # omitted: arg-test clock-test clock cpeek-test cprintf cursor deb dir-test div-test
 # em-test exec-test1 exec-test2 fileio-test ft getopt-test heaptest joy-test moddiv-test
 # mouse-test mul-test posixio-test rename-test scanf-test seek ser-test strdup-test
-# strnlen stroserror-test strqtok-test tinyshell uname-test
+# strnlen stroserror-test strqtok-test uname-test
 EXELIST_pce = \
 	minimal \
 	conio
-	
+
 # omitted: arg-test clock-test clock cpeek-test conio cprintf deb dir-test div-test
 # em-test exec-test1 exec-test2 fileio-test ft getopt-test heaptest joy-test moddiv-test
 # mouse-test posixio-test rename-test scanf-test seek ser-test strdup-test strnlen
-# stroserror-test strqtok-test tinyshell uname-test
+# stroserror-test strqtok-test uname-test
 EXELIST_osic1p = \
 	minimal \
 	cursor \
@@ -639,7 +629,7 @@ EXELIST_osic1p = \
 # omitted: arg-test clock-test clock cpeek-test conio cprintf deb dir-test div-test
 # em-test exec-test1 exec-test2 fileio-test ft getopt-test heaptest joy-test moddiv-test
 # mouse-test posixio-test rename-test scanf-test seek ser-test strdup-test strnlen
-# stroserror-test strqtok-test tinyshell uname-test
+# stroserror-test strqtok-test uname-test
 EXELIST_geos-apple = \
 	minimal \
 	cursor \
@@ -648,7 +638,7 @@ EXELIST_geos-apple = \
 # omitted: arg-test clock-test clock cpeek-test conio cprintf deb dir-test div-test
 # em-test exec-test1 exec-test2 fileio-test ft getopt-test heaptest joy-test moddiv-test
 # mouse-test posixio-test rename-test scanf-test seek ser-test strdup-test strnlen
-# stroserror-test strqtok-test tinyshell uname-test
+# stroserror-test strqtok-test uname-test
 
 EXELIST_geos-cbm = \
 	minimal \
@@ -657,7 +647,7 @@ EXELIST_geos-cbm = \
 
 # omitted: clock clock-test conio cpeek-test cprintf cursor deb dir-test em-test
 # exec-test1 exec-test2 ft heaptest joy-test mouse-test mul-test rename-test seek
-# ser-test strdup-test stroserror-test tinyshell uname-test
+# ser-test strdup-test stroserror-test uname-test
 EXELIST_sim6502 = \
 	minimal \
 	arg-test \
@@ -669,9 +659,14 @@ EXELIST_sim6502 = \
 	scanf-test \
 	strnlen \
 	strqtok-test
-	
+
 EXELIST_sim65c02 = $(EXELIST_sim6502)
 
+
+# omitted: arg-test clock clock-test conio cpeek-test cprintf cursor deb dir-test
+# div-test em-test exec-test1 exec-test2 fileio-test ft getopt-test heaptest
+# joy-test moddiv-test mouse-test mul-test posixio-test rename-test scanf-test
+# ser-test seek strdup-test strnlen stroserror-test strqtok-test tinyshell uname-test
 EXELIST_atari2600 = \
 	minimal
 
@@ -679,6 +674,9 @@ EXELIST_atari5200 = \
 	minimal
 
 EXELIST_gamate = \
+	minimal
+
+EXELIST_lynx = \
 	minimal
 
 EXELIST_supervision = \
@@ -692,10 +690,6 @@ EXELIST_bbc = \
 EXELIST_lunix = \
 	notavailable
 
-# none of the testcode can work on the lynx (library support is broken!)
-EXELIST_lynx = \
-	notavailable
-
 # Unlisted targets will try to build everything.
 # That lets us learn what they cannot build, and what settings
 # we need to use for programs that can be built and run.
@@ -705,7 +699,7 @@ endif
 
 define SUBDIR_recipe
 
-@$(MAKE) -C $(dir) --no-print-directory $@
+@+$(MAKE) -C $(dir) --no-print-directory $@
 
 endef # SUBDIR_recipe
 
@@ -726,6 +720,52 @@ disk: $(DISK_$(SYS))
 all:
 
 # --------------------------------------------------------------------------
+# List of every supported platform
+TARGETS :=     \
+  apple2       \
+  apple2enh    \
+  atari        \
+  atarixl      \
+  atari2600    \
+  atari5200    \
+  atmos        \
+  bbc          \
+  c128         \
+  c16          \
+  c64          \
+  cbm510       \
+  cbm610       \
+  creativision \
+  cx16         \
+  gamate       \
+  lunix        \
+  lynx         \
+  nes          \
+  osic1p       \
+  pce          \
+  pet          \
+  plus4        \
+  sim6502      \
+  sim65c02     \
+  supervision  \
+  sym1         \
+  telestrat    \
+  vic20
+
+# --------------------------------------------------------------------------
+# Rule to make the binaries for every platform
+
+define TARGET_recipe
+
+@$(MAKE) -j2 SYS:=$(T)
+@$(MAKE) --no-print-directory clean SYS:=$(T)
+
+endef # TARGET_recipe
+
+platforms:
+	$(foreach T,$(TARGETS),$(TARGET_recipe))
+
+# --------------------------------------------------------------------------
 # some programs link against getsp.o
 
 mouse-test: mouse-test.o getsp.o
@@ -734,18 +774,12 @@ mouse-test: mouse-test.o getsp.o
 ifneq ($(SYS),vic20)
 ft: ft.o getsp.o
 	$(LD) $(LDFLAGS) -t $(SYS) -o $@ $^ $(SYS).lib
-
-tinyshell: tinyshell.o getsp.o
-	$(LD) $(LDFLAGS) -t $(SYS) -o $@ $^ $(SYS).lib
 endif
 
 # some programs need more memory on the vic20
 
 ifeq ($(SYS),vic20)
 ft:  ft.o getsp.o
-	$(LD) $(LDFLAGS) -o $@ -C vic20-32k.cfg -m $@.map $^ $(SYS).lib
-
-tinyshell:  tinyshell.o getsp.o
 	$(LD) $(LDFLAGS) -o $@ -C vic20-32k.cfg -m $@.map $^ $(SYS).lib
 endif
 
