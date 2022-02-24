@@ -1226,11 +1226,11 @@ static ExprNode* Factor (void)
                 SB_GetLen (&CurTok.SVal) == 1) {
                 /* A character constant */
                 N = GenLiteralExpr (TgtTranslateChar (SB_At (&CurTok.SVal, 0)));
+                NextTok ();
             } else {
                 N = GenLiteral0 ();     /* Dummy */
                 Error ("Syntax error");
             }
-            NextTok ();
             break;
     }
     return N;
@@ -1708,7 +1708,7 @@ ExprNode* GenLiteralExpr (long Val)
 
 
 ExprNode* GenLiteral0 (void)
-/* Return an expression tree that encodes the the number zero */
+/* Return an expression tree that encodes the number zero */
 {
     return GenLiteralExpr (0);
 }
