@@ -313,6 +313,9 @@ TypeCode GetUnderlyingTypeCode (const Type* Type);
 ** Return TCode if it is not scalar.
 */
 
+const Type* GetBitFieldChunkType (const Type* Type);
+/* Get the type needed to operate on the byte chunk containing the bit-field */
+
 unsigned SizeOf (const Type* T);
 /* Compute size of object represented by type array. */
 
@@ -363,6 +366,12 @@ const Type* PtrConversion (const Type* T);
 /* If the type is a function, convert it to pointer to function. If the
 ** expression is an array, convert it to pointer to first element. Otherwise
 ** return T.
+*/
+
+const Type* StdConversion (const Type* T);
+/* If the type is a function, convert it to pointer to function. If the
+** expression is an array, convert it to pointer to first element. If the
+** type is an integer, do integeral promotion. Otherwise return T.
 */
 
 const Type* IntPromotion (const Type* T);
@@ -555,6 +564,9 @@ INLINE int IsTypeBitField (const Type* T)
 #else
 #  define IsTypeBitField(T)     (IsTypeSignedBitField (T) || IsTypeUnsignedBitField (T))
 #endif
+
+int IsTypeFragBitField (const Type* T);
+/* Return true if this is a bit-field that shares byte space with other fields */
 
 #if defined(HAVE_INLINE)
 INLINE int IsTypeStruct (const Type* T)
